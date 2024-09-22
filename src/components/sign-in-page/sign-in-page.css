@@ -1,0 +1,28 @@
+.elements-container {
+    width: 85vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: white;
+}
+
+body {
+    background: linear-gradient(
+    to left,
+    rgba(7, 27, 82, 1) 0%,
+    rgba(0, 128, 128, 1) 100%
+  );
+}
+
+@media (max-width: 900px) {
+    .elements-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
