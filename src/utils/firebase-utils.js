@@ -3,12 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDWahEdiIE56XT_bIqyiVaUoLr8sN8ZBfI",
-  authDomain: "chatterbox-af796.firebaseapp.com",
-  projectId: "chatterbox-af796",
-  storageBucket: "chatterbox-af796.appspot.com",
-  messagingSenderId: "1091522277016",
-  appId: "1:1091522277016:web:db2b4f1699bbfedcb16aed"
+  //Firebase Config
 };
 
 const app = initializeApp(firebaseConfig);
