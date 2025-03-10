@@ -92,6 +92,7 @@ function SignIn() {
           className="google-sign-in-submit-button"
           onClick={googleSignIn}
         >
+          <img className='google-icon' src='https://img.icons8.com/color/48/000000/google-logo.png' alt='google-icon' />
           Google Sign In
         </button>
       </form>

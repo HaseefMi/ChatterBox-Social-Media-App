@@ -4,18 +4,16 @@ import { collection, getDocs, query, limit } from 'firebase/firestore';
 import { db } from '../../utils/firebase-utils';
 import { Timestamp } from 'firebase/firestore';
 import Likes from '../likes/likes';
+import Logo from '../../assets/chatterbox-logo.png'
 
 function Feed() {
     const [feedItems, setFeedItems] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    
     const handleRefresh = () => {
         setRefresh(!refresh);
     };
 
-
-    const handleSearch = (e) => {
-        
-    }
     useEffect(() => {
         const fetchItems = async () => {
             try {
@@ -44,8 +42,9 @@ function Feed() {
 
     return (
         <div className="feed-container">
-            <h2 className="feed-header">For You Page</h2>
-            <button type="button" className="feed-refresh-button" onClick={handleRefresh}>Refresh Feed</button>
+            <div className='feed-banner'>
+                <img src={Logo} className='feed-logo' onClick={handleRefresh}/>
+            </div>
             <ul className="feed-items">
                 {feedItems.map(item => (
                     <li className="feed-item" key={item.id}>

@@ -1,3 +1,8 @@
-span {
+.like-container {
+    display: block;
+    margin: 0 auto;
+}
+
+.like-container span {
     cursor: pointer;
 }

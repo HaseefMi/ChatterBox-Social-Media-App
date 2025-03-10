@@ -45,7 +45,7 @@ function Likes({ id }) {
     };
 
     return (
-        <div>
+        <div className='like-container'>
             <span onClick={addLike}>❤️ {likes}</span>
         </div>
     );

@@ -1,12 +1,30 @@
 body {
   margin: 0;
   padding: 20px 40px;
-  font-family: 'Karla', sans-serif;
+  font-family: "Figtree", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(177, 253, 228);
+}
+
+* {
+  font-family: "Figtree", sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  background-color: rgb(16, 126, 89);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+@media(max-width: 500px) {
+  body {
+    padding: 0;
+  }
 }

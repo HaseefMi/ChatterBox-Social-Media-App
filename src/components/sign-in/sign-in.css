@@ -3,11 +3,12 @@
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 25px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: rgb(16, 126, 89);
+    margin-bottom: -125px;
   }
-  
   .sign-in-header {
     text-align: center;
     font-size: 1.5rem;
@@ -37,7 +38,7 @@
   .sign-in-submit-button {
     width: 100%;
     padding: 10px;
-    background-color: rgb(0, 0, 255); 
+    background-color: rgb(16, 126, 89);
     color: #fff;
     font-size: 1.1rem;
     border: none;
@@ -59,10 +60,16 @@
   }
   
   .sign-in-submit-button:hover {
-    background-color: rgb(27, 27, 192); 
+    background-color: rgb(13, 138, 96); 
   }
   
   .sign-in-submit-button:active {
-    background-color: blue; 
+    background-color: rgb(16, 126, 89);
+  }
+
+.google-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
   }
   
