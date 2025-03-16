@@ -1,6 +1,5 @@
 .like-container {
-    display: block;
-    margin: 0 auto;
+    margin-top: 16px;
 }
 
 .like-container span {

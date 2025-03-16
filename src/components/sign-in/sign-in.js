@@ -14,7 +14,7 @@ const defaultFormFields = {
 
 function SignIn() {
   const navigate = useNavigate();
-  const { setUserName } = useContext(UserContext);
+  const { setUserName, userInfo, setUserInfo } = useContext(UserContext);
   const {setIsAuth} = useContext(HomeAuth)
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
@@ -33,6 +33,10 @@ function SignIn() {
       const userDoc = await getDoc(userDocRef)
       if (userDoc.exists()) {
         setUserName(userDoc.data().username)
+        setUserInfo(prevState => ({
+          ...prevState,
+          uid: userDoc.data().uid,
+        }));
       }
       else {
         alert("No User Exists")

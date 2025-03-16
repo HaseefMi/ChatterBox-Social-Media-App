@@ -3,12 +3,15 @@ import { UserContext } from '../../contexts/user-context';
 import { db } from '../../utils/firebase-utils' 
 import { collection, addDoc } from 'firebase/firestore';
 import './post.css'
+import FooterNav from '../footer-nav/footer-nav';
+import { useNavigate } from 'react-router-dom';
 
 function CreatePost() {
-  const { userName } = useContext(UserContext);
+  const { userName, userInfo } = useContext(UserContext);
   const [postText, setPostText] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const navigate = useNavigate();
 
   const handleTextChange = (e) => {
     setPostText(e.target.value);
@@ -30,17 +33,21 @@ function CreatePost() {
     e.preventDefault();
     const createdAt = new Date()
 
+    const user_id = userInfo['uid']
+    
     try {
       await addDoc(collection(db, 'Posts'), {
         userName,
         postText,
         imageUrl,
-        createdAt
+        createdAt,
+        user_id,
       });
 
       setPostText('');
       setImageUrl(null);
       setSelectedFile(null);
+      navigate('/home');
     } catch (error) {
       console.error('Error Creating Post: ', error);
       alert('Error Creating Post | Sorry -_-');
@@ -48,6 +55,7 @@ function CreatePost() {
   };
 
   return (
+    <>
     <div className="create-post-container">
       <form onSubmit={handleSubmit}>
         <div className="create-post-header">Create a Post</div>
@@ -72,6 +80,8 @@ function CreatePost() {
         <button type='submit' className="create-post-submit-button">Post</button>
       </form>
     </div>
+    <FooterNav />
+    </>
   );
 }
 

@@ -18,7 +18,7 @@ function SignUp() {
   const navigate = useNavigate()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password, confirmPassword, username } = formFields;
-  const {setUserName} = useContext(UserContext)
+  const {setUserName, setUserInfo} = useContext(UserContext)
   const {setIsAuth} = useContext(HomeAuth)
 
   const handleChange = (event) => {
@@ -28,25 +28,30 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-
+  
     try {
       const {user} = await createUserWithEmailAndPassword(auth, email, password);
-      await createUserDocumentFromAuth(user, {name, username});
-      setUserName(username)
+      await createUserDocumentFromAuth(user, {name, username, uid: user.uid});
+      setUserName(username);
+      setUserInfo(prevState => ({
+        ...prevState,
+        uid: user.uid
+      }));
       setFormFields(defaultFormFields);
-      setIsAuth(true)
-      navigate('/home')
-
+      setIsAuth(true);
+      navigate('/home');
+  
     } catch (error) {
       console.error("Error creating user: ", error);
       alert(error.message);
     }
   };
+  
 
   return (
     <div className='sign-up-container'>

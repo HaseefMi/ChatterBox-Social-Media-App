@@ -1,0 +1,12 @@
+.profile-container {
+    text-align: center;
+}
+
+.bio-input {
+    padding: 50px;
+}
+
+.profile-container button {
+    cursor: pointer;
+    border: 0;
+}
