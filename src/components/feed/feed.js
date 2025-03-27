@@ -6,11 +6,13 @@ import { Timestamp } from 'firebase/firestore';
 import Likes from '../likes/likes';
 import Logo from '../../assets/chatterbox-logo.png'
 import { UserContext } from '../../contexts/user-context';
+import Comment from '../comment/comment';
 
 function Feed() {
     const [feedItems, setFeedItems] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [followStatus, setFollowStatus] = useState({}); 
+    const [showComment, setShowComment] = useState(false);
     const { userInfo } = useContext(UserContext);
 
     const handleRefresh = () => {
@@ -118,7 +120,9 @@ function Feed() {
                         {item.imageUrl && <img src={item.imageUrl} alt="Post image" />}
                         <div className="icons-container">
                             <Likes id={item.id} />
-                            <p>🗨️3</p>
+                            <p onClick={() => setShowComment(!showComment)}>🗨️</p>
+                            <br />
+                            {showComment && <Comment postId={item.id}/>}
                         </div>
                         <p className="timestamp">{item.createdAt}</p>
                     </li>

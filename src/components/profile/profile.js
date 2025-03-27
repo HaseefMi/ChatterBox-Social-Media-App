@@ -144,11 +144,18 @@ function Profile() {
 
     return (
         <div className='profile-container'>
-            {!profile.pic ? (
-                <img src={AccountPlaceHolder} onClick={() => setEditPic(!editPic)} />
-            ) : (
-                <img src={profile.pic} onClick={() => setEditPic(!editPic)} />
-            )}
+            <div className='profile-header'>
+                {!profile.pic ? (
+                    <img className='placeholder-pic' src={AccountPlaceHolder} onClick={() => setEditPic(!editPic)} />
+                ) : (
+                    <img src={profile.pic} onClick={() => setEditPic(!editPic)} />
+                )}
+                <div className='profile-info'>
+                    <h1>{userName}</h1>
+                    <p>Followers: {followers}</p>
+                    <p>Following: {following}</p>
+                </div>
+            </div>
             {editPic && (
                 <>
                     <p>Change Your Profile Picture</p>
@@ -159,46 +166,43 @@ function Profile() {
                     </form>
                 </>
             )}
-            <h1>{userName}'s Profile</h1>
-            <p>Followers: {followers}</p>
-            <p>Following: {following}</p>
             {profile ? (
-                <>
-                    <h2>Name: {profile.name}</h2>
-                    <h2>Account Created at {profile.createdAt.toDate().toLocaleString()}</h2>
-
-                    <h3>Bio:</h3>
-                    {editBio ? (
-                        <form onSubmit={handleSubmit}>
-                            <textarea
-                                className='bio-input'
-                                name='bio'
-                                value={formFields.bio}
-                                onChange={handleChange}
-                            />
-                            <br />
-                            <button type='submit'>Save</button>
-                        </form>
-                    ) : (
-                        <p onClick={() => setEditBio(true)}>{profile.bio || 'Add Your Bio!'}</p>
-                    )}
-
-                    <h3>Birthday:</h3>
-                    {editBirthday ? (
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                type='date'
-                                name='birthday'
-                                value={formFields.birthday}
-                                onChange={handleChange}
-                            />
-                            <br />
-                            <button type="submit">Save</button>
-                        </form>
-                    ) : (
-                        <p onClick={() => setEditBirthday(true)}>{profile.birthday || 'Add Your Birthday'}</p>
-                    )}
-                </>
+                <div className='account-details'>
+                    <div className='name-bio'>
+                        <h2>{profile.name}</h2>
+                        {editBio ? (
+                            <form onSubmit={handleSubmit}>
+                                <textarea
+                                    className='bio-input'
+                                    name='bio'
+                                    value={formFields.bio}
+                                    onChange={handleChange}
+                                />
+                                <br />
+                                <button type='submit'>Save</button>
+                            </form>
+                        ) : (
+                            <p onClick={() => setEditBio(true)}>{profile.bio || 'Add Your Bio!'}</p>
+                        )}
+                    </div>
+                    <div className='birthday-account-created'>
+                        {editBirthday ? (
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type='date'
+                                    name='birthday'
+                                    value={formFields.birthday}
+                                    onChange={handleChange}
+                                />
+                                <br />
+                                <button type="submit">Save</button>
+                            </form>
+                        ) : (
+                        <p onClick={() => setEditBirthday(true)}>{`Born ${profile.birthday}` || 'Add Your Birthday'}</p>
+                        )}
+                        <p>Account Created at {profile.createdAt.toDate().toLocaleString()}</p>
+                    </div>
+                </div>
             ) : (
                 <p>No profile data available.</p>
             )}

@@ -11,6 +11,7 @@ function CreatePost() {
   const [postText, setPostText] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [showComment, setShowComment] = useState(false);
   const navigate = useNavigate();
 
   const handleTextChange = (e) => {
